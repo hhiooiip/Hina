@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国近现代史纲要 · 复习题速记</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f6f1e6;
+    --paper-deep:#efe7d5;
+    --ink:#2a2420;
+    --ink-soft:#6b6055;
+    --guohong:#9c2e22;
+    --guohong-deep:#7a2118;
+    --gold:#b8923d;
+    --jade:#3f6e5c;
+    --jade-soft:#e7efe9;
+    --line:#ddd2ba;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    background-image:
+      radial-gradient(circle at 15% 8%, rgba(156,46,34,0.04), transparent 40%),
+      radial-gradient(circle at 85% 92%, rgba(184,146,61,0.06), transparent 40%);
+    color:var(--ink);
+    font-family:"Noto Sans SC", sans-serif;
+    font-size:14px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:28px 20px 80px;}
+
+  /* Header */
+  header{
+    position:relative;
+    padding:34px 28px 26px;
+    margin-bottom:22px;
+    background:linear-gradient(180deg, var(--guohong) 0%, var(--guohong-deep) 100%);
+    color:var(--paper);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  header::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 40px);
+    pointer-events:none;
+  }
+  header .eyebrow{
+    font-size:11.5px; letter-spacing:.28em; text-transform:uppercase;
+    color:rgba(246,241,230,0.75); font-weight:500; margin-bottom:8px;
+  }
+  header h1{
+    font-family:"Noto Serif SC", serif;
+    font-weight:900;
+    font-size:30px;
+    margin:0 0 6px;
+    letter-spacing:.02em;
+  }
+  header .sub{
+    font-size:13px; color:rgba(246,241,230,0.82);
+    display:flex; gap:18px; flex-wrap:wrap; margin-top:14px;
+  }
+  header .sub b{color:var(--paper); font-weight:700;}
+  header .stamp{
+    position:absolute; top:22px; right:26px;
+    font-family:"Noto Serif SC", serif;
+    font-weight:900; font-size:13px;
+    color:var(--gold);
+    border:2px solid var(--gold);
+    border-radius:3px;
+    padding:5px 9px;
+    letter-spacing:.15em;
+    transform:rotate(4deg);
+    opacity:.9;
+  }
+
+  /* Controls */
+  .controls{
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    margin-bottom:20px;
+  }
+  .controls button{
+    font-family:"Noto Sans SC",sans-serif;
+    font-size:12.5px; font-weight:700;
+    background:var(--paper-deep);
+    border:1px solid var(--line);
+    color:var(--ink);
+    padding:7px 14px;
+    border-radius:20px;
+    cursor:pointer;
+    transition:.15s;
+  }
+  .controls button:hover{background:#fff; border-color:var(--gold);}
+  .controls button.primary{
+    background:var(--jade); color:#fff; border-color:var(--jade);
+  }
+  .controls button.primary:hover{background:#365f50;}
+  .controls .count{
+    margin-left:auto; font-size:12px; color:var(--ink-soft);
+  }
+
+  /* Timeline / era sections */
+  .timeline{ position:relative; padding-left:26px; }
+  .timeline::before{
+    content:"";
+    position:absolute; left:8px; top:6px; bottom:6px; width:2px;
+    background:linear-gradient(180deg, var(--gold), var(--guohong) 50%, var(--jade));
+    opacity:.5;
+  }
+  .era{ position:relative; margin-bottom:30px; }
+  .era-head{
+    position:relative;
+    display:flex; align-items:baseline; gap:10px;
+    margin-bottom:12px;
+  }
+  .era-head::before{
+    content:"";
+    position:absolute; left:-26px; top:5px;
+    width:11px; height:11px; border-radius:50%;
+    background:var(--paper);
+    border:2.5px solid var(--guohong);
+  }
+  .era-year{
+    font-family:"Noto Serif SC",serif; font-weight:700; font-size:12px;
+    color:var(--guohong); background:var(--paper-deep);
+    border:1px solid var(--line); padding:2px 8px; border-radius:3px;
+    white-space:nowrap;
+  }
+  .era-title{
+    font-family:"Noto Serif SC",serif; font-weight:700; font-size:16.5px;
+    color:var(--ink);
+  }
+
+  /* Question cards */
+  .qlist{ display:flex; flex-direction:column; gap:6px; }
+  details.q{
+    background:#fffdf8;
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+  }
+  details.q[open]{ border-color:var(--gold); box-shadow:0 2px 10px rgba(156,46,34,0.06); }
+  details.q summary{
+    list-style:none;
+    cursor:pointer;
+    padding:9px 14px;
+    display:flex; align-items:flex-start; gap:10px;
+    font-size:13.5px;
+  }
+  details.q summary::-webkit-details-marker{display:none;}
+  .qnum{
+    flex:none;
+    font-family:"Noto Serif SC",serif; font-weight:700; font-size:12px;
+    color:#fff; background:var(--ink-soft);
+    width:22px;height:22px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    margin-top:1px;
+  }
+  details.q[open] .qnum{ background:var(--guohong); }
+  .qtext{ flex:1; font-weight:500; }
+  .caret{ flex:none; color:var(--ink-soft); font-size:11px; margin-top:3px; transition:transform .15s; }
+  details.q[open] .caret{ transform:rotate(90deg); color:var(--guohong); }
+
+  .qbody{ padding:2px 14px 12px 46px; }
+  .opts{ display:flex; flex-direction:column; gap:4px; margin-bottom:8px; }
+  .opt{
+    display:flex; gap:8px; font-size:13px; padding:4px 9px;
+    border-radius:4px; border:1px solid transparent; color:var(--ink-soft);
+  }
+  .opt .lab{ flex:none; font-weight:700; color:var(--ink-soft); }
+  .opt.correct{
+    background:var(--jade-soft); border-color:#c9dcd0; color:var(--ink);
+  }
+  .opt.correct .lab{ color:var(--jade); }
+  .opt.correct::after{ content:"✓"; margin-left:auto; color:var(--jade); font-weight:700; }
+
+  .answer-line{
+    font-size:12.5px; color:var(--jade); font-weight:700;
+    background:var(--jade-soft); display:inline-block;
+    padding:3px 10px; border-radius:20px;
+  }
+
+  footer{
+    text-align:center; margin-top:34px; font-size:11.5px; color:var(--ink-soft);
+  }
+
+  @media print{
+    body{background:#fff;}
+    header{background:var(--guohong) !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    .controls{display:none;}
+    details.q{ break-inside:avoid; }
+    details.q .qbody{ display:block !important; }
+  }
+
+  @media (max-width:560px){
+    header h1{font-size:23px;}
+    header .stamp{display:none;}
+    .wrap{padding:16px 12px 60px;}
+    .timeline{padding-left:18px;}
+    .era-head::before{left:-18px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="stamp">纲 要</div>
+    <div class="eyebrow">中国近现代史纲要 · 期末复习</div>
+    <h1>多选题速记 · 55题全解</h1>
+    <div class="sub">
+      <span>题量 <b>55</b></span>
+      <span>题型 <b>多选题</b></span>
+      <span>范围 <b>1840—1956</b></span>
+      <span>满分 <b>100分</b></span>
+    </div>
+  </header>
+
+  <div class="controls">
+    <button class="primary" id="toggleAll">全部展开</button>
+    <button id="collapseAll">全部收起</button>
+    <span class="count" id="cnt"></span>
+  </div>
+
+  <div class="timeline" id="timeline"></div>
+
+  <footer>点击题目展开查看正确答案 · 绿色高亮为正确选项</footer>
+</div>
+
+<script>
+const DATA = [
+  {era:"晚清覆亡 · 反侵略与太平天国", year:"1840–1864", items:[
+    [1,"鸦片战争后，中国社会性质发生的变化是",["殖民地的中国变为独立的中国","独立的中国变为殖民地的中国","封建的中国变为半封建的中国","独立的中国变为半殖民地的中国"],"CD"],
+    [2,"促使西方列强发动对中国的侵略战争的主要原因是",["中国清政府的闭关锁国","西方列强转移国内矛盾的需要","西方列强和中国的贸易摩擦","西方列强开辟新的市场的需要"],"BD"],
+    [3,"中国半殖民地半封建社会的特点是",["帝国主义操纵中国的财政和经济命脉","中国社会经济、政治发展不平衡","民族资本主义经济成为主要的经济形式","封建地主土地所有制依然保持着"],"ABD"],
+    [4,"西方列强通过以下哪些条约，一步步剥夺了中国的关税自主权",["1842年中英《南京条约》","1843年中英《五口通商章程：海关税则》","1844年中美《望厦条约》和中法《黄埔条约》","1858年《天津条约》"],"ABCD"],
+    [5,"近代列强攻入北京的侵华战争有",["第二次鸦片战争","中日甲午战争","中法战争","八国联军侵华战争"],"AD"],
+    [6,"下列人物观点表述中主要主张学习西方科学技术的有",["魏源主张师夷之长技以制夷","薛福成“今诚取西人器数之学，以卫吾尧、舜、禹、汤、文、武、周、孔之道”","康有为主张实行君民共主","张之洞主张旧学为体新学为用"],"ABD"],
+    [7,"《天朝田亩制度》的意义在于",["反映了农民对建立“有田同耕、有饭同食”理想社会的向往","反映了农民获得土地的渴望","是对封建土地所有制的否定","反映了发展民族资本主义的要求"],"ABC"],
+    [8,"太平天国后期，洪秀全起用的青年将领有",["陈玉成","李秀成","韦昌辉","石达开"],"AB"],
+    [9,"太平天国区别于历史上农民战争的两项重要理论创建是",["科学地对待儒学","提出了《天朝田亩制度》","提出了中国近代史上第一个具有资本主义色彩的方案","利用宗教发动组织群众"],"BC"],
+    [10,"太平天国起义的发生和失败表明",["在半殖民地半封建社会，农民具有伟大的革命力量","农民阶级是最革命的阶级","农民阶级不能担负起领导反帝反封建斗争取得胜利重任","农民阶级没有能力参与反帝反封建斗争"],"AC"],
+  ]},
+  {era:"救亡图存 · 戊戌维新与辛亥革命", year:"1898–1919", items:[
+    [11,"下列描述属于戊戌维新运动的背景的有",["中日甲午战争中国战败","19世纪90年代以后中国民族资本主义的初步发展","八国联军侵华","列强掀起瓜分中国的狂潮"],"ABD"],
+    [12,"资产阶级维新派举办的影响比较大的学会有",["强学会","兴中会","南学会","保国会"],"ACD"],
+    [13,"中国同盟会的政治纲领是",["驱除鞑虏","恢复中华","创立民国","平均地权"],"ABCD"],
+    [14,"20世纪初，中华民族危机加深体现在",["列强加强了对清政府的政治控制","列强意图扩展在华经济势力","外国在华投资规模急速扩大","铁路、矿山的利权成为列强掠夺的重要目标"],"ABCD"],
+    [15,"三民主义中的“民族主义”包括的内容有",["驱除鞑虏","恢复中华","创立民国","平均地权"],"AB"],
+    [16,"袁世凯窃国专政的表现是",["扩充军队、建立警察、特务系统","制造“宋教仁案”","复辟帝制","炮制《中华民国约法》"],"ABCD"],
+    [17,"资产阶级革命派反对北洋军阀的斗争有",["辛亥革命","“二次革命”","护国战争","护法运动"],"BCD"],
+    [18,"在经济上，北洋政府竭力维护",["帝国主义的利益","地主阶级的利益","买办资产阶级的利益","民族资产阶级的利益"],"ABC"],
+    [19,"辛亥革命失败的原因包括",["没有完整的正确的政治纲领和社会改革方案","没有充分发动和依靠民众","没有提出彻底的反帝反封建的革命纲领","没有建立坚强的革命政党"],"BCD"],
+  ]},
+  {era:"建党与土地革命", year:"1921–1935", items:[
+    [20,"中共“二大”制定的民主革命纲领包括",["打倒军阀","推翻帝国主义压迫","实现共产主义","统一中国为真正的民主共和国"],"ABD"],
+    [21,"没有中国共产党，就不会有1925至1927年大革命的发生，主要因为",["共产党人进行了诸多卓有成效的军事工作","中国共产党发动和组织了广大人民群众","大革命是在国共合作统一战线下进行的，共产党是倡导者和组织者","中国共产党提出了反帝反军阀的政治口号"],"ABCD"],
+    [22,"国民党政府实行一党专政的军事独裁统治表现在",["建立了庞大的军队","建立了庞大的全国性特务系统","大力推行保甲制度","厉行文化专制主义"],"ABCD"],
+    [23,"同南昌起义相比，湘赣边界秋收起义的特点在于",["放弃了“左派国民党”运动的旗号","公开打出了“工农革命军”的旗帜","不仅是军队的行动，而且有数量众多的工农武装参加","攻占了中心城市"],"ABC"],
+    [24,"“三湾改编”的主要内容是",["将原有的一个师缩编为一个团","在部队中建立共产党各级组织","将党的支部建在连上","成立各级士兵委员会，部队内部实行民主管理"],"ABCD"],
+    [25,"井冈山根据地创建的意义是",["点燃了“工农武装割据”的星星之火","为其他各地起义武装树立了榜样","开辟了共产党深入农村保存和发展革命力量的正确道路","代表了1927年革命失败后中国革命的发展方向"],"ABCD"],
+    [26,"红色政权存在和发展的主观条件是",["中国是几个帝国主义国家间接统治、经济政治发展极端不平衡的半殖民地半封建大国","国民革命的影响","相当力量的正式红军的存在","共产党组织的坚强有力和各项政策的正确贯彻执行"],"CD"],
+    [27,"下列著作中属于毛泽东阐述农村包围城市道路理论的著作是",["《中国的红色政权为什么能够存在》","《井冈山的斗争》","《论持久战》","《星星之火，可以燎原》"],"ABD"],
+    [28,"以下与毛泽东在土地革命战争时期制定的土地分配方法相一致的是",["按劳动力平均分配土地","以乡为单位分配土地","在原耕地基础上抽多补少","在原耕地基础上抽肥补瘦"],"BCD"],
+    [29,"红军长征到达陕北后，毛泽东科学阐明党的马克思主义思想路线的著作是",["《论反对日本帝国主义的策略》","《实践论》","《矛盾论》","《中国革命战争的战略问题》"],"BC"],
+    [30,"长征铸就了长征精神，以下属于长征精神的是",["坚持革命理想和信念的精神","不怕艰难险阻，不惜付出一切牺牲的精神","坚持实事求是，一切从实际出发的精神","顾全大局、严守纪律的精神"],"ABCD"],
+  ]},
+  {era:"全民族抗战", year:"1931–1945", items:[
+    [31,"面对九一八事变和华北事变，国民政府奉行的妥协方针主要指的是",["不抵抗主义","攘外必先安内","持久消耗战","以空间换时间"],"AB"],
+    [32,"1938年底日本调整了侵华政策，主要表现为",["以华制华、以战养战","对国民政府实行政治诱降为主，军事打击为辅","扶植傀儡政权，发展汉奸组织","对敌后抗日根据地进行“扫荡”"],"ABCD"],
+    [33,"从1931年9月到1937年7月，日本先后对中国发动的侵略事件有",["九一八事变","一二八事变","华北事变","七七事变"],"ABCD"],
+    [34,"中国抗日战争在世界反法西斯战争中的地位和作用表现为",["是世界反法西斯战争的重要组成部分","为盟军对日作战提供了重要的后方基地","阻止了日军的北进和南下","是亚洲反法西斯的主战场"],"ABCD"],
+    [35,"抗日战争胜利的伟大意义有",["彻底粉碎了日本军国主义殖民奴役中国的图谋","促进了中华民族的大团结，形成了伟大的抗战精神","为维护世界和平作出了巨大贡献","开辟了中华民族伟大复兴的光明前景"],"ABCD"],
+    [36,"中国抗日战争胜利的原因有",["国际社会爱好和平的国家和人民的支持","中国共产党的中流砥柱作用","全民族民众的共同努力","以爱国主义为核心的民族精神的引领"],"ABCD"],
+    [37,"为了坚持、扩大和巩固抗日民族统一战线，中国共产党制定的策略总方针是",["发展进步势力","孤立顽固势力","争取中间势力","坚决与国民党顽固派战斗到底"],"ABC"],
+    [38,"毛泽东的《论持久战》著作",["阐述了抗日战争的特点、前途和发展规律","阐明了持久抗战的总方针","科学地预测了抗战的发展进程","驳斥了“亡国论”和“速胜论”"],"ABCD"],
+    [39,"抗战时期文化界提出的文艺创作的三大目标是",["抗战","民主","团结","复古"],"ABC"],
+    [40,"毛泽东在《论持久战》一文中指出中日之间的特点有",["敌强我弱","敌小我大","敌退步我进步","敌失道寡助，我得道多助"],"ABCD"],
+    [41,"《论持久战》科学预测的抗日战争发展进程，即",["敌之战略进攻、我之战略防御","敌之战略保守、我之准备反攻","我之战略反攻、敌之战略退却","敌之战略进攻、我之战略退却"],"ABC"],
+    [42,"抗日战争期间，延安整风运动的内容主要有",["反对主观主义以整顿学风","反对宗派主义以整顿党风","反对儒学以推行新文化","反对党八股以整顿文风"],"ABD"],
+  ]},
+  {era:"解放战争与新中国诞生", year:"1945–1949", items:[
+    [43,"蒋介石在积极准备内战的同时，又表示愿意与中共谈判，目的是",["建设新中国","敷衍国内外舆论","诱使中共交出军队和解放区政权","如果谈判不成，即放手发动内战，将内战责任转嫁中国共产党"],"BCD"],
+    [44,"1946年1月召开的政治协商会议，达成的协议包括",["改组国民党一党政府，成立政府委员会为最高国务机关","立法院为相当于议会的最高国家立法机关，由选民直接选举产生","行政院为最高行政机关，并对立法院负责","立法院对行政院不信任时，行政院辞职或提前总统解散立法院"],"ABCD"],
+    [45,"以自卫战争粉碎国民党军事进攻，中共中央作了明确指示，下列说法正确的是",["政治上必须和群众亲密合作","必须争取一切可以争取的人","建立广泛的人民民主统一战线","必须集中优势兵力、各个歼灭敌人的作战原则"],"ABCD"],
+    [46,"中共七届二中全会的主要内容包括",["规定了全国胜利后党在政治、经济、外交方面应采取的基本政策","指出了中国由农业国转变为工业国、由新民主主义转变为社会主义的发展方向","提出了“两个务必”的要求","指出国内主要矛盾是人民经济文化需要同落后状况之间的矛盾"],"ABC"],
+    [47,"毛泽东在《论人民民主专政》中阐述的建立人民民主专政新中国的主张包括",["人民民主专政的基础是工人阶级、农民阶级和城市小资产阶级的联盟","主要是工人阶级和农民阶级的联盟","由新民主主义到社会主义，主要依靠工农联盟","必须利用一切有利的城乡资本主义因素，团结民族资产阶级"],"ABCD"],
+    [48,"关于《共同纲领》的说法正确的是",["《论人民民主专政》和中共七届二中全会决议是基础","是全国人民的大宪章","起着临时宪法的作用","中国人民政治协商会议通过"],"ABCD"],
+    [49,"关于中国人民政治协商会议第一次会议，正确说法是",["通过临时宪法性质的《共同纲领》","通过中央人民政府组织法","选举毛泽东为中央人民政府主席","完成了创建新中国的筹备工作"],"ABCD"],
+    [50,"中国人民政治协商会议《共同纲领》规定",["实行工人阶级领导的、以工农联盟为基础的人民民主专政","中华人民共和国境内各民族一律平等","以公私兼顾、劳资两利、城乡互助、内外交流的政策发展生产","保障本国独立、自由和领土主权完整，维护国际持久和平"],"ABCD"],
+    [51,"中国革命胜利的主要原因是",["有了中国工人阶级先锋队——中国共产党的领导","各民主党派、无党派人士、少数民族、知识分子和华侨等发挥的积极作用","国际无产阶级的支持","英美等国的指导和帮助"],"ABC"],
+  ]},
+  {era:"新中国建设与社会主义改造", year:"1949–1956", items:[
+    [52,"关于“一五”计划，下列表述正确的是",["1953年开始","优先发展轻工业","优先发展重工业","工业化建设就此大规模开始"],"ACD"],
+    [53,"对于资本主义工商业的社会主义改造，中国共产党采取的政策是",["利用","限制","改造","消灭"],"ABC"],
+    [54,"我国农业社会主义改造的原则和方法是",["稳步前进","自愿、互利","典型示范","逐步推广"],"ABCD"],
+    [55,"关于社会主义改造完成的说法正确的是",["1956年，社会主义改造基本完成","社会主义性质经济占国民经济绝大多数，是主要成果","社会主义制度在中国全面确立","社会主义改造前我们已经是社会主义国家"],"ABC"],
+  ]},
+];
+
+const LABELS = ["A","B","C","D"];
+const tl = document.getElementById('timeline');
+let total = 0;
+
+DATA.forEach(section=>{
+  const eraDiv = document.createElement('div');
+  eraDiv.className = 'era';
+
+  const head = document.createElement('div');
+  head.className = 'era-head';
+  head.innerHTML = `<span class="era-year">${section.year}</span><span class="era-title">${section.era}</span>`;
+  eraDiv.appendChild(head);
+
+  const qlist = document.createElement('div');
+  qlist.className = 'qlist';
+
+  section.items.forEach(([num, text, opts, correct])=>{
+    total++;
+    const det = document.createElement('details');
+    det.className = 'q';
+
+    const optsHtml = opts.map((o,i)=>{
+      const lab = LABELS[i];
+      const isCorrect = correct.includes(lab);
+      return `<div class="opt${isCorrect?' correct':''}"><span class="lab">${lab}.</span><span>${o}</span></div>`;
+    }).join('');
+
+    det.innerHTML = `
+      <summary>
+        <span class="qnum">${num}</span>
+        <span class="qtext">${text}</span>
+        <span class="caret">▶</span>
+      </summary>
+      <div class="qbody">
+        <div class="opts">${optsHtml}</div>
+        <span class="answer-line">正确答案：${correct.split('').join(' ')}</span>
+      </div>
+    `;
+    qlist.appendChild(det);
+  });
+
+  eraDiv.appendChild(qlist);
+  tl.appendChild(eraDiv);
+});
+
+document.getElementById('cnt').textContent = `共 ${total} 题`;
+
+document.getElementById('toggleAll').addEventListener('click', ()=>{
+  document.querySelectorAll('details.q').forEach(d=>d.open = true);
+});
+document.getElementById('collapseAll').addEventListener('click', ()=>{
+  document.querySelectorAll('details.q').forEach(d=>d.open = false);
+});
+</script>
+</body>
+</html>
